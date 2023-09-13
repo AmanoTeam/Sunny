@@ -1,0 +1,37 @@
+plugins {
+	id 'com.android.application'
+}
+
+android {
+	namespace 'com.amanoteam.sunny'
+
+	compileSdk 33
+
+	defaultConfig {
+		minSdk 21
+		targetSdk 34
+		versionCode 1
+		versionName "0.1"
+	}
+
+	buildTypes {
+		debug {
+			debuggable true
+			minifyEnabled false
+			zipAlignEnabled false
+			shrinkResources false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+		release {
+			debuggable false
+			minifyEnabled false
+			zipAlignEnabled false
+			shrinkResources false
+			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+		}
+	}
+}
+
+dependencies {
+	 compileOnly 'de.robv.android.xposed:api:82'
+}
