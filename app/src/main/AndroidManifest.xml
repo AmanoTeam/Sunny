@@ -10,7 +10,7 @@
 			android:value="true" />
 		<meta-data
 			android:name="xposeddescription"
-			android:value="Prevent Tachiyomi from throttling your requests" />
+			android:value="Prevent Tachiyomi/Mihon from throttling your requests" />
 		<meta-data
 			android:name="xposedminversion"
 			android:value="53" />
