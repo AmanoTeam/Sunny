@@ -22,12 +22,14 @@ public class Sunny implements IXposedHookLoadPackage {
 		"eu.kanade.tachiyomi.sy",
 		"eu.kanade.tachiyomi.sy.debug",
 		"eu.kanade.tachiyomi.az",
-		"eu.kanade.tachiyomi.az.debug"
+		"eu.kanade.tachiyomi.az.debug",
+		"app.mihon",
+		"app.mihon.debug"
 	};
 	
 	private static final String rateLimitInterceptor = "eu.kanade.tachiyomi.network.interceptor.RateLimitInterceptor";
 	
-	private static final XC_MethodHook methodHook = new XC_MethodHook() {
+	private static final XC_MethodHook rateLimitHook = new XC_MethodHook() {
 		
 		@Override
 		protected void beforeHookedMethod(final MethodHookParam methodHookParam) throws Throwable {
@@ -40,6 +42,16 @@ public class Sunny implements IXposedHookLoadPackage {
 			if (className.equals(rateLimitInterceptor)) {
 				methodHookParam.setResult(thisObject);
 			}
+		}
+		
+	};
+	
+	private static final XC_MethodHook concurrentDownloadsHook = new XC_MethodHook() {
+		
+		@Override
+		protected void beforeHookedMethod(final MethodHookParam methodHookParam) throws Throwable {
+			final int maxConcurrency = (int) methodHookParam.args[1];
+			methodHookParam.args[1] = maxConcurrency * 8;
 		}
 		
 	};
@@ -67,13 +79,24 @@ public class Sunny implements IXposedHookLoadPackage {
 					final Context context = (Context) param.args[0];
 					final ClassLoader classLoader = context.getClassLoader();
 					
-					final Class clazz = findClass("okhttp3.Interceptor", loadPackageParam.classLoader);
-					findAndHookMethod("okhttp3.OkHttpClient$Builder", classLoader, "addInterceptor", clazz,  methodHook);
+					final Class interceptorClass = findClass("okhttp3.Interceptor", loadPackageParam.classLoader);
+					findAndHookMethod("okhttp3.OkHttpClient$Builder", classLoader, "addInterceptor", interceptorClass, rateLimitHook);
+					
+					final Class function1Class = findClass("rx.functions.Func1", loadPackageParam.classLoader);
+					
+					findAndHookMethod("rx.Observable", classLoader, "flatMap", function1Class, int.class, concurrentDownloadsHook);
+					
+					final Class flowClass = findClass("kotlinx.coroutines.flow.Flow", loadPackageParam.classLoader);
+					final Class function2Class = findClass("kotlin.jvm.functions.Function2", loadPackageParam.classLoader);
+					
+					findAndHookMethod("kotlinx.coroutines.flow.FlowKt", classLoader, "flatMapMerge", flowClass, int.class, function2Class, concurrentDownloadsHook);
 				}
 				
 			}
 			
 		);
+		
+					
 		
 	}
 	
