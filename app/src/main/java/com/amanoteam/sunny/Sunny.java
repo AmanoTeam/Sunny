@@ -24,7 +24,9 @@ public class Sunny implements IXposedHookLoadPackage {
 		"eu.kanade.tachiyomi.az",
 		"eu.kanade.tachiyomi.az.debug",
 		"app.mihon",
-		"app.mihon.debug"
+		"app.mihon.debug",
+		"eu.kanade.tachiyomi.yokai",
+		"eu.kanade.tachiyomi.yokai.debug"
 	};
 	
 	private static final String rateLimitInterceptor = "eu.kanade.tachiyomi.network.interceptor.RateLimitInterceptor";
@@ -95,8 +97,6 @@ public class Sunny implements IXposedHookLoadPackage {
 			}
 			
 		);
-		
-					
 		
 	}
 	
