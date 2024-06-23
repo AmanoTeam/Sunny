@@ -27,6 +27,7 @@ public class Sunny implements IXposedHookLoadPackage {
 		"app.mihon.debug",
 		"eu.kanade.tachiyomi.yokai",
 		"eu.kanade.tachiyomi.yokai.debug",
+		"eu.kanade.tachiyomi.nightlyYokai",
 		"xyz.luft.tachiyomi.mi",
 		"xyz.luft.tachiyomi.mi.debug",
 		"com.dark.animetailv2",
