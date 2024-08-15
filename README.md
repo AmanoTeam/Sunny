@@ -28,4 +28,4 @@ Note that it takes more than 30 seconds to completely load the page without the 
 
 The minimum supported version is Tachiyomi v0.12.0. It might be compatible with older releases, but that is not guaranteed to work.
 
-This was tested up to Mihon v0.16.3.
+This was tested up to Mihon v0.16.5.
