@@ -31,7 +31,9 @@ public class Sunny implements IXposedHookLoadPackage {
 		"xyz.luft.tachiyomi.mi",
 		"xyz.luft.tachiyomi.mi.debug",
 		"com.dark.animetailv2",
-		"com.dark.animetailv2.debug"
+		"com.dark.animetailv2.debug",
+		"app.komikku",
+		"app.komikku.beta"
 	};
 
 	private static final String rateLimitInterceptor = "RateLimitInterceptor";
