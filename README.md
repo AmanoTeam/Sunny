@@ -42,4 +42,4 @@ This was tested up to Mihon v0.17.1.
 
 ## Non-root alternative
 
-If you are looking for a non-root alternative, try my [fork](https://github.com/AmanoTeam/mihon) of Mihon. It's the original Mihon app with my changes on top of it.
+If you are looking for a non-root alternative, try my [fork](https://github.com/AmanoTeam/Kahon) of Mihon. It's the original Mihon app with my changes on top of it.
