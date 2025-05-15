@@ -20,7 +20,7 @@ jobs:
         distribution: temurin
     - name: Build Android project
       run: |
-        bash gradlew --no-daemon 'assembleRelease'
+        bash gradlew --warning-mode 'all' --no-daemon 'assembleRelease'
     - name: Upload artifact
       uses: actions/upload-artifact@main
       with:
