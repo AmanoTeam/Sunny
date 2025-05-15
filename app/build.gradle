@@ -3,31 +3,37 @@ plugins {
 }
 
 android {
-	namespace 'com.amanoteam.sunny'
+	namespace = 'com.amanoteam.sunny'
 
-	compileSdk 35
+	compileSdk = 36
 
 	defaultConfig {
-		minSdk 21
-		targetSdk 35
-		versionCode 5
-		versionName "0.5"
+		minSdk = 21
+		targetSdk = 36
+		versionCode = 5
+		versionName = "0.5"
 	}
 
 	buildTypes {
 		debug {
-			debuggable true
-			minifyEnabled false
-			zipAlignEnabled false
-			shrinkResources false
-			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+			debuggable = true
+			minifyEnabled = false
+			zipAlignEnabled = false
+			shrinkResources = false
+			proguardFiles (
+				getDefaultProguardFile('proguard-android.txt'),
+				'proguard-rules.pro'
+			)
 		}
 		release {
-			debuggable false
-			minifyEnabled false
-			zipAlignEnabled false
-			shrinkResources false
-			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+			debuggable = false
+			minifyEnabled = false
+			zipAlignEnabled = false
+			shrinkResources = false
+			proguardFiles (
+				getDefaultProguardFile('proguard-android-optimize.txt'),
+				'proguard-rules.pro'
+			)
 		}
 	}
 }
