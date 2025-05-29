@@ -1,0 +1,1 @@
+-keep,allowoptimization public class com.amanoteam.sunny.Sunny { *; }
